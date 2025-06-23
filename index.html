@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Kalleb - Full Stack Developer</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+   <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              const el = entry.target;
+              el.classList.add("animate__animated", el.dataset.animate);
+              el.classList.remove("opacity-0");
+              observer.unobserve(el);
+            }
+          });
+        },
+        {
+          threshold: 0.1,
+        }
+      );
+
+      document.querySelectorAll("[data-animate]").forEach((el) => {
+        el.classList.add("opacity-0");
+        observer.observe(el);
+      });
+    });
+  </script>
+</head>
+<body class="bg-gray-900 text-gray-100 font-sans transition-colors duration-300 ease-in-out">
+  <!-- Loading Screen -->
+<div id="loading-screen" class="fixed inset-0 bg-gray-900 flex flex-col justify-center items-center z-50">
+  <div class="w-16 h-16 border-4 border-cyan-400 border-t-transparent rounded-full animate-spin"></div>
+  <p class="mt-4 text-cyan-400 font-semibold text-lg">Loading your experience...</p>
+</div>
+
+  <!-- Header -->
+  <header class="bg-gray-800 shadow-md fixed w-full z-50 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+      <div class="text-2xl font-bold text-cyan-400 cursor-pointer hover:scale-105 transition-transform">Kalleb</div>
+      <nav class="hidden md:flex space-x-8 text-gray-300">
+        <a href="#about" class="hover:text-cyan-400 transition-colors duration-300">About</a>
+        <a href="#skills" class="hover:text-cyan-400 transition-colors duration-300">Skills</a>
+        <a href="#projects" class="hover:text-cyan-400 transition-colors duration-300">Projects</a>
+        <a href="#contact" class="hover:text-cyan-400 transition-colors duration-300">Contact</a>
+      </nav>
+      <button id="menu-btn" class="md:hidden text-cyan-400 hover:scale-110 transition-transform">
+        <svg class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8h16M4 16h16" />
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile menu -->
+  <div id="mobile-menu" class="hidden fixed top-16 left-0 w-full bg-gray-800 shadow-md md:hidden z-40 transition-all duration-300">
+    <nav class="flex flex-col p-4 space-y-4 text-gray-300">
+      <a href="#about" class="hover:text-cyan-400 transition-colors duration-300" onclick="toggleMenu()">About</a>
+      <a href="#skills" class="hover:text-cyan-400 transition-colors duration-300" onclick="toggleMenu()">Skills</a>
+      <a href="#projects" class="hover:text-cyan-400 transition-colors duration-300" onclick="toggleMenu()">Projects</a>
+      <a href="#contact" class="hover:text-cyan-400 transition-colors duration-300" onclick="toggleMenu()">Contact</a>
+    </nav>
+  </div>
+
+  <!-- Hero -->
+  <section class="pt-24 bg-gradient-to-br from-cyan-600 via-blue-600 to-purple-700 text-white transition-all duration-300 min-h-screen flex items-center">
+    <div class="max-w-4xl mx-auto px-6 py-20 text-center">
+      <h1 class="text-6xl font-extrabold mb-6 drop-shadow-lg transition-transform duration-300 hover:scale-[1.02] leading-tight">
+        Full Stack Developer
+      </h1>
+      <p class="mb-4 text-2xl font-semibold text-cyan-100">Hi, I'm Kalleb</p>
+      <p class="mb-8 text-lg drop-shadow-md max-w-2xl mx-auto leading-relaxed">
+        Passionate about creating modern web applications with clean code, responsive design, and exceptional user experiences across all devices.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="#projects" class="bg-white text-cyan-600 font-bold px-8 py-4 rounded-lg shadow-lg hover:bg-cyan-50 hover:scale-105 transition-all duration-300">
+          View My Work
+        </a>
+        <a href="#contact" class="border-2 border-white text-white font-bold px-8 py-4 rounded-lg hover:bg-white hover:text-cyan-600 hover:scale-105 transition-all duration-300">
+          Get In Touch
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about" class="max-w-6xl mx-auto px-6 py-20">
+    <div class="text-center mb-16">
+      <h2 class="text-4xl font-bold text-cyan-400 mb-6">About Me</h2>
+      <div class="bg-gray-800 rounded-xl p-8 shadow-xl">
+        <p class="text-lg text-gray-300 leading-relaxed max-w-3xl mx-auto">
+          I'm a dedicated full stack developer with a passion for building scalable web applications. 
+          I love turning complex problems into simple, beautiful solutions through clean code and modern technologies. 
+          My focus is on creating applications that not only look great but perform exceptionally well.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills -->
+  <section id="skills" class="bg-gray-800 py-20">
+    <div class="max-w-7xl mx-auto px-6">
+      <h2 class="text-4xl font-bold text-cyan-400 mb-16 text-center">Technical Skills</h2>
+      <div class="grid md:grid-cols-2 gap-10 max-w-4xl mx-auto">
+        <div class="bg-gray-900 rounded-xl shadow-md p-8 hover:shadow-xl transition-all duration-300 hover:scale-[1.02] border border-gray-700">
+          <div class="text-4xl mb-4 text-center">🎨</div>
+          <h3 class="text-2xl font-bold mb-4 text-cyan-400 text-center">Frontend</h3>
+          <ul class="text-gray-300 space-y-3 text-center">
+            <li class="flex items-center justify-center space-x-2">
+              <span class="w-2 h-2 bg-cyan-400 rounded-full"></span>
+              <span>HTML5</span>
+            </li>
+            <li class="flex items-center justify-center space-x-2">
+              <span class="w-2 h-2 bg-cyan-400 rounded-full"></span>
+              <span>JavaScript</span>
+            </li>
+            <li class="flex items-center justify-center space-x-2">
+              <span class="w-2 h-2 bg-cyan-400 rounded-full"></span>
+              <span>Tailwind CSS</span>
+            </li>
+            <li class="flex items-center justify-center space-x-2">
+              <span class="w-2 h-2 bg-cyan-400 rounded-full"></span>
+              <span>Bootstrap</span>
+            </li>
+            <li class="flex items-center justify-center space-x-2">
+              <span class="w-2 h-2 bg-cyan-400 rounded-full"></span>
+              <span>Responsive Design</span>
+            </li>
+          </ul>
+        </div>
+        
+        <div class="bg-gray-900 rounded-xl shadow-md p-8 hover:shadow-xl transition-all duration-300 hover:scale-[1.02] border border-gray-700">
+          <div class="text-4xl mb-4 text-center">⚙️</div>
+          <h3 class="text-2xl font-bold mb-4 text-cyan-400 text-center">Backend</h3>
+          <ul class="text-gray-300 space-y-3 text-center">
+            <li class="flex items-center justify-center space-x-2">
+              <span class="w-2 h-2 bg-cyan-400 rounded-full"></span>
+              <span>PHP</span>
+            </li>
+            <li class="flex items-center justify-center space-x-2">
+              <span class="w-2 h-2 bg-cyan-400 rounded-full"></span>
+              <span>MySQL</span>
+            </li>
+            <li class="flex items-center justify-center space-x-2">
+              <span class="w-2 h-2 bg-cyan-400 rounded-full"></span>
+              <span>Database Design</span>
+            </li>
+            <li class="flex items-center justify-center space-x-2">
+              <span class="w-2 h-2 bg-cyan-400 rounded-full"></span>
+              <span>Web Development</span>
+            </li>
+            <li class="flex items-center justify-center space-x-2">
+              <span class="w-2 h-2 bg-cyan-400 rounded-full"></span>
+              <span>Problem Solving</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects" class="max-w-7xl mx-auto px-6 py-20">
+    <h2 class="text-4xl font-bold text-cyan-400 mb-16 text-center">Featured Projects</h2>
+    
+    <!-- Video Demo Section -->
+    <div class="mb-16 bg-gray-800 rounded-xl p-8 shadow-xl border border-gray-700">
+      <h3 class="text-2xl font-bold text-cyan-400 mb-6 text-center">Project Demo</h3>
+      <div class="relative w-full max-w-4xl mx-auto">
+        <div class="relative w-full" style="padding-bottom: 56.25%;">
+          <iframe 
+            src="https://www.youtube.com/embed/NfpDcHBxjMc" 
+            class="absolute top-0 left-0 w-full h-full rounded-lg"
+            frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen>
+          </iframe>
+        </div>
+        <p class="text-gray-300 mt-4 text-center">
+          Watch this demonstration of my latest web application showcasing modern UI design and full-stack functionality.
+        </p>
+      </div>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-10 max-w-4xl mx-auto">
+      <!-- Project 1 - Business Website -->
+      <div class="bg-gray-800 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 hover:scale-[1.02] overflow-hidden border border-gray-700">
+        <div class="h-48 bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center">
+          <div class="text-white text-6xl">🌐</div>
+        </div>
+        <div class="p-6">
+          <h3 class="text-xl font-bold mb-3 text-cyan-400">Professional Website</h3>
+          <p class="text-gray-300 mb-4">Modern business website with responsive design, contact forms, and clean UI. Built with semantic HTML, custom CSS, and interactive JavaScript features.</p>
+          <div class="flex flex-wrap gap-2 mb-4">
+            <span class="bg-cyan-600 text-white px-3 py-1 rounded-full text-sm">HTML5</span>
+            <span class="bg-cyan-600 text-white px-3 py-1 rounded-full text-sm">CSS3</span>
+            <span class="bg-cyan-600 text-white px-3 py-1 rounded-full text-sm">JavaScript</span>
+            <span class="bg-cyan-600 text-white px-3 py-1 rounded-full text-sm">Responsive</span>
+          </div>
+          <div class="flex gap-3">
+            <a href="#" class="text-cyan-400 hover:text-cyan-300 transition-colors text-sm font-medium">Live Demo</a>
+            <a href="#" class="text-cyan-400 hover:text-cyan-300 transition-colors text-sm font-medium">Source Code</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 2 - Netlify Project -->
+      <div class="bg-gray-800 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 hover:scale-[1.02] overflow-hidden border border-gray-700">
+        <div class="h-48 bg-gradient-to-br from-green-500 to-teal-600 flex items-center justify-center relative">
+          <div class="text-white text-6xl">⚡</div>
+          <div class="absolute top-2 right-2 bg-green-600 text-white px-2 py-1 rounded text-xs font-bold">
+            LIVE
+          </div>
+        </div>
+        <div class="p-6">
+          <h3 class="text-xl font-bold mb-3 text-cyan-400">Portfolio Dashboard</h3>
+          <p class="text-gray-300 mb-4">Interactive portfolio dashboard deployed on Netlify with continuous deployment, form handling, and modern UI components.</p>
+          <div class="flex flex-wrap gap-2 mb-4">
+            <span class="bg-cyan-600 text-white px-3 py-1 rounded-full text-sm">HTML5</span>
+            <span class="bg-cyan-600 text-white px-3 py-1 rounded-full text-sm">TailwindCSS</span>
+            <span class="bg-cyan-600 text-white px-3 py-1 rounded-full text-sm">Netlify</span>
+            <span class="bg-cyan-600 text-white px-3 py-1 rounded-full text-sm">CI/CD</span>
+          </div>
+          <div class="flex gap-3">
+            <a href="https://your-project.netlify.app" target="_blank" class="text-cyan-400 hover:text-cyan-300 transition-colors text-sm font-medium">
+              Live on Netlify ↗
+            </a>
+            <a href="#" class="text-cyan-400 hover:text-cyan-300 transition-colors text-sm font-medium">Source Code</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="text-center mt-12">
+      <a href="#contact" class="bg-cyan-600 text-white font-bold px-8 py-3 rounded-lg hover:bg-cyan-700 hover:scale-105 transition-all duration-300 inline-block">
+        Let's Build Something Together
+      </a>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="bg-gray-800 py-20 px-6">
+    <div class="max-w-2xl mx-auto text-center">
+      <h2 class="text-4xl font-bold text-cyan-400 mb-6">Let's Work Together</h2>
+      <p class="text-gray-300 mb-8 text-lg">
+        Ready to bring your ideas to life? I'm always excited to work on new projects and collaborate with great people.
+      </p>
+      
+      <form class="space-y-6 bg-gray-900 p-8 rounded-xl shadow-xl border border-gray-700">
+        <div class="grid md:grid-cols-2 gap-6">
+          <div>
+            <label class="block text-left text-sm font-medium text-gray-300 mb-2">Name</label>
+            <input type="text" required placeholder="Your name"
+              class="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500
+                bg-gray-700 text-gray-100 border-gray-600 transition-all duration-300" />
+          </div>
+          <div>
+            <label class="block text-left text-sm font-medium text-gray-300 mb-2">Email</label>
+            <input type="email" required placeholder="your@email.com"
+              class="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500
+                bg-gray-700 text-gray-100 border-gray-600 transition-all duration-300" />
+          </div>
+        </div>
+        <div>
+          <label class="block text-left text-sm font-medium text-gray-300 mb-2">Project Type</label>
+          <select required class="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500
+            bg-gray-700 text-gray-100 border-gray-600 transition-all duration-300">
+            <option value="">Select project type</option>
+            <option value="web-app">Web Application</option>
+            <option value="website">Website</option>
+            <option value="mobile-app">Mobile App</option>
+            <option value="api">API Development</option>
+            <option value="consulting">Consulting</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-left text-sm font-medium text-gray-300 mb-2">Message</label>
+          <textarea required rows="5" placeholder="Tell me about your project..."
+            class="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500
+              bg-gray-700 text-gray-100 border-gray-600 transition-all duration-300"></textarea>
+        </div>
+        <button type="submit" class="w-full bg-gradient-to-r from-cyan-600 to-blue-600 text-white font-bold py-4 rounded-lg hover:from-cyan-700 hover:to-blue-700 hover:scale-105 transition-all duration-300 shadow-lg">
+          Send Message
+        </button>
+      </form>
+      
+      <div class="mt-8 flex justify-center space-x-6">
+        <a href="mailto:kalleb@example.com" class="text-cyan-400 hover:text-cyan-300 transition-colors duration-300">
+          <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path>
+            <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path>
+          </svg>
+        </a>
+        <a href="https://github.com/kalleb" class="text-cyan-400 hover:text-cyan-300 transition-colors duration-300">
+          <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 0C4.477 0 0 4.484 0 10.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0110 4.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0020 10.017C20 4.484 15.522 0 10 0z" clip-rule="evenodd"></path>
+          </svg>
+        </a>
+        <a href="https://linkedin.com/in/kalleb" class="text-cyan-400 hover:text-cyan-300 transition-colors duration-300">
+          <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M16.338 16.338H13.67V12.16c0-.995-.017-2.277-1.387-2.277-1.39 0-1.601 1.086-1.601 2.207v4.248H8.014v-8.59h2.559v1.174h.037c.356-.675 1.227-1.387 2.526-1.387 2.703 0 3.203 1.778 3.203 4.092v4.711zM5.005 6.575a1.548 1.548 0 11-.003-3.096 1.548 1.548 0 01.003 3.096zm-1.337 9.763H6.34v-8.59H3.667v8.59zM17.668 1H2.328C1.595 1 1 1.581 1 2.298v15.403C1 18.418 1.595 19 2.328 19h15.34c.734 0 1.332-.582 1.332-1.299V2.298C19 1.581 18.402 1 17.668 1z" clip-rule="evenodd"></path>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gradient-to-r from-cyan-600 to-blue-600 text-white py-8 text-center transition-all duration-300">
+    <div class="max-w-4xl mx-auto px-6">
+      <p class="text-lg font-semibold mb-2">© 2025 Kalleb - Full Stack Developer</p>
+      <p class="text-cyan-100">Crafted with 💻 and a passion for great code</p>
+    </div>
+  </footer>
+
+  <script>
+    const toggleMenu = () => {
+      document.getElementById('mobile-menu').classList.toggle('hidden');
+    };
+    document.getElementById('menu-btn').addEventListener('click', toggleMenu);
+    
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+  </script>
+  
+  <script>
+    window.addEventListener("load", () => {
+      const loadingScreen = document.getElementById("loading-screen");
+      loadingScreen.style.transition = "opacity 0.5s ease";
+      loadingScreen.style.opacity = "0";
+      setTimeout(() => loadingScreen.style.display = "none", 500);
+    });
+  </script>
+</body>
+</html>
